@@ -24,15 +24,21 @@ void l_printHeader(){
 char *l_mainWindow(char *msg){
   l_printHeader();
   char *return_value = malloc(300);
-  printf("\t-> %s", msg);
-  gets(return_value);
+  if (strcmp(msg, "Enter your password: ") == 0){
+    char pass_msg[25] = "\t-> ";
+    strcat(pass_msg, msg);
+    return_value = getpass(pass_msg);
+  } else {
+    printf("\t-> %s", msg);
+    gets(return_value);
+  }
   return return_value;
 }
 
 void l_resultWindow(char *username, char *password, char *address, char *message, int message_count){
   l_printHeader();
   printf("\t==> Username: %s\n", username);
-  printf("\t==> Password: %s\n", password);
+  printf("\t==> Password: %s\n", "***");
   printf("\t==> Address: %s\n", address);
   printf("\t==> Message: %s\n", message);
   printf("\t==> Message Count: %d\n", message_count);
