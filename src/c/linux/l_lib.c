@@ -1,5 +1,18 @@
 #include "l_lib.h"
 
+void l_runApp(char *username, char *password, char *address, char *message){
+  char command[500] = "python3 src/py/app.py --username ";
+  strcat(command, username);
+  strcat(command, " --password ");
+  strcat(command, password);
+  strcat(command, " --addr ");
+  strcat(command, address);
+  strcat(command, " --msg ");
+  strcat(command, message);
+  system(command);
+  return;
+}
+
 void l_printHeader(){
   system("clear");
   printf("\n\t===============================\n");
@@ -10,7 +23,7 @@ void l_printHeader(){
 
 char *l_mainWindow(char *msg){
   l_printHeader();
-  char *return_value = malloc(strlen(msg)+2);
+  char *return_value = malloc(300);
   printf("\t-> %s", msg);
   gets(return_value);
   return return_value;
@@ -27,10 +40,13 @@ void l_resultWindow(char *username, char *password, char *address, char *message
   printf("\tDo you confirm? (yes/no): ");
   char *return_value = malloc(10);
   gets(return_value);
-  if (strcmp(return_value, "yes") == 0)
-    for (int i=0; i<message_count; i++)
-      printf("yesss\n");
-  else {
+  if (strcmp(return_value, "yes") == 0){
+    for (int i=0; i<message_count; i++){
+      l_printHeader();
+      printf("\tMessages're sending... (%d / %d)\n", i, message_count);
+      l_runApp(username, password, address, message);
+    }
+  } else {
     system("clear");
     g_error_message("cancelled");
   }

@@ -3,6 +3,7 @@
 
 #include "../include/header.h"
 
+void l_runApp(char *username, char *password, char *address, char *message);
 void l_printHeader();
 char *l_mainWindow(char *msg);
 void l_resultWindow(char *username, char *password, char *address, char *message, int message_count);
