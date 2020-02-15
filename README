@@ -1,0 +1,11 @@
+inst-commenty
+=============
+comment bot for instagram
+(requires selenium for python3)
+
+compile for linux:
+	$ make
+	$ ./inst-commenty
+
+compile for windows:
+	soon...
