@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.firefox.options import Options
 import time
 import os, sys
 
@@ -18,8 +19,11 @@ def error_message(msg):
 
 def main(username, password, addr, msg):
     time_delay = 4
-    
-    driver = webdriver.Firefox()
+
+    options = Options()
+    options.add_argument("--headless")
+
+    driver = webdriver.Firefox(options=options)
     driver.get("https://instagram.com/accounts/login")
 
     time.sleep(time_delay)

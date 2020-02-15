@@ -10,6 +10,10 @@ debug: $(DEPS)
 	@echo "Compiled..! (Debug)"
 	@echo "Check Git Page:" $(GIT_PAGE)
 
+clean:
+	@rm -rf *.log inst-commenty
+	@echo "Cleaned..!"
+
 editapp:
 	@emacs src/py/app.py
 

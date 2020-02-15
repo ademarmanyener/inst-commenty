@@ -45,6 +45,7 @@ void l_resultWindow(char *username, char *password, char *address, char *message
       l_printHeader();
       printf("\tMessages're sending... (%d / %d)\n", i, message_count);
       l_runApp(username, password, address, message);
+      printf("\n\tOK.\n\n");
     }
   } else {
     system("clear");
