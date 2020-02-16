@@ -39,7 +39,10 @@ char *l_mainWindow(char *msg){
 void l_resultWindow(char *username, char *password, char *address, char *message, int message_count){
   l_printHeader();
   printf("\t==> Username: %s\n", username);
-  printf("\t==> Password: %s\n", "***");
+  printf("\t==> Password: ", "***");
+  for (int i=0; i<strlen(password); i++)
+    printf("*");
+  printf("\n");
   printf("\t==> Address: %s\n", address);
   printf("\t==> Message: %s\n", message);
   printf("\t==> Message Count: %d\n", message_count);
