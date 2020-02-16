@@ -7,8 +7,9 @@ void l_runApp(char *username, char *password, char *address, char *message){
   strcat(command, password);
   strcat(command, " --addr ");
   strcat(command, address);
-  strcat(command, " --msg ");
+  strcat(command, " --msg '");
   strcat(command, message);
+  strcat(command, "'");
   system(command);
   return;
 }
@@ -60,7 +61,17 @@ void l_resultWindow(char *username, char *password, char *address, char *message
   return;
 }
 
+void l_checkGeckoDriver(){
+  if (access("/usr/local/bin/geckodriver", F_OK) != -1){
+    return;
+  } else {
+    system("sudo cp -r src/files/geckodriver /usr/local/bin/");
+  }
+  return;
+}
+
 int l_main(int argc, char *argv[]){
+  l_checkGeckoDriver();
   char *username = l_mainWindow("Enter your username: ");
   char *password = l_mainWindow("Enter your password: ");
   char *address = l_mainWindow("Enter post address: ");
