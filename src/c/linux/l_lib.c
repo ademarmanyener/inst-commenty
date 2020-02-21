@@ -9,7 +9,7 @@ void l_runApp(char *username, char *password, char *address, char *message){
   strcat(command, address);
   strcat(command, " --msg '");
   strcat(command, message);
-  strcat(command, "'");
+  strcat(command, "' 2>/dev/null");
   system(command);
   return;
 }
@@ -53,7 +53,7 @@ void l_resultWindow(char *username, char *password, char *address, char *message
   if (strcmp(return_value, "yes") == 0){
     for (int i=0; i<message_count; i++){
       l_printHeader();
-      printf("\tMessages're sending... (%d / %d)\n", i, message_count);
+      printf("\tMessages're sending... (%d / %d)\n", i+1, message_count);
       l_runApp(username, password, address, message);
       printf("\n\tOK.\n\n");
     }
