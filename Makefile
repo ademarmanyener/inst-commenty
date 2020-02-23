@@ -1,19 +1,19 @@
 include config.mk
 
 build: $(DEPS)
-	@$(CC) $(CORE_GLOBAL_C) $(LINUX_C) -o $(APP_ID) 2>/dev/null
+	@$(CC) $(CORE_GLOBAL_C) $(LINUX_C) -o $(APP_ID).o 2>/dev/null
 	@python3 -m py_compile src/py/app.py.src
 	@mv src/py/__pycache__/app.py.cpython-37.pyc src/py/app.py
 	@echo "Compiled..!"
 	@echo "Check Git Page:" $(GIT_PAGE)
 
 debug: $(DEPS)
-	@$(CC) $(CORE_GLOBAL_C) $(LINUX_C) -o $(APP_ID)
+	@$(CC) $(CORE_GLOBAL_C) $(LINUX_C) -o $(APP_ID).o
 	@echo "Compiled..! (Debug)"
 	@echo "Check Git Page:" $(GIT_PAGE)
 
 clean:
-	@rm -rf *.log $(APP_ID) $(APP_ID).exe src/py/__pycache__ src/py/app.py
+	@rm -rf $(CLEAN_FILES)
 	@echo "Cleaned..!"
 
 windows: $(DEPS)

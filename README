@@ -5,7 +5,7 @@ comment bot for instagram
 
 compile for linux:
 	$ make
-	$ ./inst-commenty
+	$ ./inst-commenty.o
 
 compile for windows:
 	soon...

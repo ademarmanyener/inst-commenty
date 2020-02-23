@@ -16,7 +16,14 @@ def error_message(msg):
     print("error")
     print("=====")
     print(" -> " + msg)
-
+    return
+    
+def print_usage():
+    print("usage")
+    print("=====")
+    print("python3 app.py --username <username> --password <password> --addr <post address> --msg <message>")
+    return
+    
 def main(username, password, addr, msg):
     time_delay = 4
 
@@ -50,7 +57,8 @@ def main(username, password, addr, msg):
     
     time.sleep(time_delay)
     driver.close()
-
+    return
+    
 if len(sys.argv) > 7:
     username = ""
     password = ""
@@ -65,7 +73,11 @@ if len(sys.argv) > 7:
     if sys.argv[7] == "--msg":
         msg = sys.argv[8]
     main(username, password, addr, msg)
-else: 
-    error_message("unexpected param length, use --usage")
-
-  
+else:
+    if len(sys.argv) > 1:
+        if sys.argv[1] == "--usage":
+            print_usage()
+        else:
+            error_message("unexpected param length, use --usage")
+    else:        
+        error_message("unexpected param length, use --usage")

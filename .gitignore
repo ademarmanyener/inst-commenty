@@ -1,2 +1,3 @@
-inst-commenty
-geckodriver.log
+*.o
+*.log
+*.swp
