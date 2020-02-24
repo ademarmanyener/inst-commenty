@@ -12,6 +12,12 @@ debug: $(DEPS)
 	@echo "Compiled..! (Debug)"
 	@echo "Check Git Page:" $(GIT_PAGE)
 
+#
+# BETA
+#
+gtk:
+	@$(CC) src/c/core-gtk.c -Wall `pkg-config --libs --cflags gtk+-3.0` -export-dynamic -o $(APP_ID).o
+
 clean:
 	@rm -rf $(CLEAN_FILES)
 	@echo "Cleaned..!"
